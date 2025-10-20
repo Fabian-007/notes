@@ -1,13 +1,12 @@
 //import node built-in web server module
 const express = require('express');
 const app = express();
-// Serve static frontend build
-app.use(express.static('dist'));
-app.use(express.json());
-// parse application/x-www-form-urlencoded (forms)
-app.use(express.urlencoded({ extended: true }));
 const cors = require('cors');
 app.use(cors());
+// Serve static frontend build
+app.use(express.json());
+app.use(express.static('dist'));
+
 
 let notes = [
   {
@@ -56,20 +55,17 @@ app.delete('/api/notes/:id', (request, response) => {
 
 //generate new id number for new note 
 const generateId = () => {
-  // use the current maximum numeric id and add 1 to avoid collisions
-  const maxId = notes.length > 0
-    ? Math.max(...notes.map(n => Number(n.id)))
-    : 0;
-  return String(maxId + 1);
+const maxId = notes.length > 0
+? Math.floor(Math.random() * 1000000)
+: 0 
+return String(maxId + 1)
 }
 
 
 app.post('/api/notes', (request, response) => {
 
-  const body = request.body;
-  // Helpful debug logs to diagnose clients that send no JSON or wrong content-type
-  console.log('POST /api/notes headers:', request.headers);
-  console.log('POST /api/notes raw body:', body);
+    const body = request.body
+    console.log(body);
 
     if(!body.content){
         return response.status(400).json({
