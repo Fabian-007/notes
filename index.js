@@ -83,7 +83,7 @@ app.post('/api/notes', (request, response) => {
     response.json(note)
   })
   
-app.get('/*', (req, res) => {
+app.get('/:path(*)', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
 });
 
