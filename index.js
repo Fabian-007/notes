@@ -81,7 +81,10 @@ app.post('/api/notes', (request, response) => {
     notes = notes.concat(note)
     response.json(note)
   })
-
+  
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
+});
 
 const PORT = process.env.PORT || 3001
 app.listen(PORT)
