@@ -1,11 +1,12 @@
 //import node built-in web server module
 const express = require('express');
+const path = require('path');
 const app = express();
 const cors = require('cors');
 app.use(cors());
 // Serve static frontend build
 app.use(express.json());
-app.use(express.static('dist'));
+app.use(express.static(path.resolve(__dirname, 'dist')));
 
 
 let notes = [
@@ -82,7 +83,7 @@ app.post('/api/notes', (request, response) => {
     response.json(note)
   })
   
-app.get('*', (req, res) => {
+app.get('/*', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
 });
 
