@@ -4,7 +4,7 @@ const app = express();
 const cors = require('cors');
 app.use(cors());
 //serve the frontend build
-app.use(express.static('build'));
+app.use(express.static('dist'));
 app.use(express.json());
 
 
