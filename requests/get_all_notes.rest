@@ -8,3 +8,12 @@ Content-Type: application/json
   "title": "Sample Note",
   "content": "This is a sample note content."
 }
+
+###
+POST http://localhost:3001/api/notes
+Content-Type: application/json
+
+{
+  "content": "Retesting my backend.",
+  "important": true
+}
