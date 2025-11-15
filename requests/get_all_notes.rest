@@ -17,3 +17,12 @@ Content-Type: application/json
   "content": "Retesting my backend.",
   "important": true
 }
+
+###
+PUT http://localhost:3001/api/notes/690eb746e47208aea3db45c9
+Content-Type: application/json
+
+{
+  "content": "This is the updated content of the note.",
+  "important": false
+}
